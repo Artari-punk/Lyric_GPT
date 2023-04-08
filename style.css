@@ -1,0 +1,286 @@
+/* General styles */
+header {
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  background-color: #333;
+}
+
+
+body {
+  background-color: #1a1a1a;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #fff;
+}
+/*svg animation*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+.container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.logo-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+
+
+svg {
+  display: block;
+  font: 12em 'Montserrat'; /* Adjust the font size here */
+  width: 320px; /* Adjust the width here */
+  height: 100px; /* Adjust the height here */
+  margin: 0 auto;
+}
+
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+    stroke: #4D163D;
+    animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+    stroke: #840037;
+    animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+    stroke: #BD0034;
+    animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+    stroke: #BD0034;
+    animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+    stroke: #FDB731;
+    animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+    100% {stroke-dashoffset: -35%;}
+}
+
+
+/* Form styles */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.topic-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 95%;
+  order: -1; /* move the topic-input div to the top */
+}
+
+.topic-input label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+select, input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #333;
+  color: #fff;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+
+/* Button styles */
+button[type="submit"] {
+  background-color: #5c5c5c; /* dark gray */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #4a4a4a; /* slightly darker gray */
+}
+
+/* Connect button styles */
+#connect-button {
+  
+  background-color: #5c5c5c; /* dark gray */
+  color: #fff;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  
+  transition: background-color 0.2s ease;
+}
+
+#connect-button:hover {
+  background-color: #4a4a4a; /* slightly darker gray */
+}
+
+/* Copy button styles */
+#copy-button {
+  background-color: #5c5c5c; /* dark gray */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#copy-button:hover {
+  background-color: #4a4a4a; /* slightly darker gray */
+}
+
+/* Style for the copy button when clicked */
+#copy-button.copied {
+  background-color: green;
+  color: white;
+}
+
+/* Output styles */
+.output-container {
+  background-color: #343434;
+  grid-column: 1 / -1; /* span both columns */
+  padding: 30px;
+  border-radius: 5px;
+  font-family: 'Special Elite';
+  font-size: 18px;
+  line-height: 1.5
+}
+
+#output {
+  font-family: "Helvetica", cursive;
+  font-size: 20px;
+  line-height: 1.74;
+  letter-spacing: 2px;
+  padding: 100px;
+  color: #fff;
+}
+
+
+
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-input {
+    order: 0; /* move the topic-input div back to its original position */
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+  }
+}
+
+/* Copy button */
+button.copied {
+  background-color: green;
+  color: #333;
+  border-radius: 5px;
+}
+
+/* Footer */
+footer {
+  border-radius: 5px;
+  margin-top: 20px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  }
+  
+  footer p {
+  margin: 0;
+  }
+  
+  .footer-links {
+  display: flex;
+  gap: 10px;
+  }
+  
+  .footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+  }
+  
+  .footer-link:hover {
+  color: #bbb;
+  }
+  
+  .footer-social {
+  display: flex;
+  gap: 10px;
+  }
+  
+  .footer-social a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+  }
+  
+  .footer-social a:hover {
+  color: #bbb;
+  }
+  
+  .footer-social i {
+  font-size: 20px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .form-group select, .form-group input[type="text"], button[type="submit"], #connect-button, #copy-button, .output-container {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .form-group select:hover, .form-group input[type="text"]:hover, button[type="submit"]:hover, #connect-button:hover, #copy-button:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }

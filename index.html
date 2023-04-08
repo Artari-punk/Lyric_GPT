@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Songwriting Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <body>
+    <header>
+      <div class="logo-container">
+  <svg viewBox="0 0 960 300">
+    <symbol id="s-text">
+      <text text-anchor="middle" x="50%" y="75%">Lyric-GPT</text>
+    </symbol>
+
+    <g class = "g-ants">
+      <use xlink:href="#s-text" class="text-copy"></use>
+      <use xlink:href="#s-text" class="text-copy"></use>
+      <use xlink:href="#s-text" class="text-copy"></use>
+      <use xlink:href="#s-text" class="text-copy"></use>
+      <use xlink:href="#s-text" class="text-copy"></use>
+    </g>
+  </svg>
+</div>
+    </header>
+    <div>
+      <label for="api-key-input">Enter your OpenAI API key:</label>
+      <input id="api-key-input" type="text">
+      <button id="connect-button">Connect</button>
+      <div id="connection-status"></div>
+    </div>
+
+    <div class="container">
+      <form>
+        <!-- Separate div for topic input -->
+        <div class="topic-input">
+          <label for="topic-input">Topic:</label>
+          <input type="text" id="topic-input" name="topic-input" placeholder="Enter a topic">
+        </div>
+        <div class="form-group">
+          <label for="Emotion">Emotion:</label>
+          <select id="Emotion"></select>
+        </div>
+        <div class="form-group">
+          <label for="tone">Tone:</label>
+          <select id="tone"></select>
+        </div>
+        <div class="form-group">
+          <label for="ambient">Ambient:</label>
+          <select id="ambient"></select>
+        </div>
+        <div class="form-group">
+          <label for="structure">Structure:</label>
+          <select id="structure"></select>
+        </div>
+        <div class="form-group">
+          <label for="style">Style:</label>
+          <select id="style"></select>
+        </div>
+        <div class="form-group">
+          <label for="ending-style">Ending Style:</label>
+          <select id="ending-style"></select>
+        </div>
+        <div class="form-group">
+          <label for="point-of-view">Point of View:</label>
+          <select id="point-of-view"></select>
+        </div>
+        <div class="form-group">
+          <label for="musicality">Musicality:</label>
+          <select id="musicality"></select>
+        </div>
+        <div class="form-group">
+          <label for="audience">Audience:</label>
+          <select id="audience"></select>
+        </div>
+        <div class="form-group">
+          <label for="rhyme-scheme">Rhyme Scheme:</label>
+          <select id="rhyme-scheme"></select>
+        </div>
+        <div class="form-group">
+          <label for="poetic-feet">Poetic Feet:</label>
+          <select id="poetic-feet"></select>
+        </div>
+        <div class="form-group">
+          <label for="inspiration-by">Inspiration by:</label>
+          <select id="inspiration-by"></select>
+        </div>
+        <button type="submit" id="submit-button">
+          Submit
+          <span class="loader"></span>
+        </button>
+        <button type="submit" id="variation-button">
+          Variation
+          <span class="loader"></span>
+        </button>
+      </form>
+
+      <div class="output-container">
+        <label for="output-containert">Click Submit for generate lyric:</label>
+        <div id="output" class="output"></div>
+        <button id="copy-button" class="copy-button">Copy to Clipboard</button>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 LyricGPT. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script>
+      const copyButton = document.getElementById("copy-button");
+      copyButton.addEventListener("click", () => {
+        const lyrics = document.getElementById("output").textContent.trim();
+        navigator.clipboard.writeText(lyrics);
+
+        // Change the text and color of the copy button
+        copyButton.textContent = "Copied!";
+        copyButton.style.backgroundColor = "green";
+
+        // Reset the text and color of the copy button after 3 seconds
+        setTimeout(() => {
+          copyButton.textContent = "Copy to Clipboard";
+          copyButton.style.backgroundColor = " ";
+        }, 3000);
+      });
+
+    </script>
+  </body>
+
+</html>
