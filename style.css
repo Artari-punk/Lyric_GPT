@@ -45,7 +45,7 @@ svg {
 
 .text-copy {
     fill: none;
-    stroke: white;
+    stroke: rgb(50, 240, 24);
     stroke-dasharray: 6% 29%;
     stroke-width: 5px;
     stroke-dashoffset: 0%;
@@ -53,22 +53,22 @@ svg {
 }
 
 .text-copy:nth-child(1){
-    stroke: #4D163D;
+    stroke: #e0f91e;
     animation-delay: -1;
 }
 
 .text-copy:nth-child(2){
-    stroke: #840037;
+    stroke: #71f638;
     animation-delay: -2s;
 }
 
 .text-copy:nth-child(3){
-    stroke: #BD0034;
+    stroke: #15f682;
     animation-delay: -3s;
 }
 
 .text-copy:nth-child(4){
-    stroke: #BD0034;
+    stroke: hsl(68, 93%, 47%);
     animation-delay: -4s;
 }
 
@@ -283,4 +283,17 @@ footer {
   
   .form-group select:hover, .form-group input[type="text"]:hover, button[type="submit"]:hover, #connect-button:hover, #copy-button:hover {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  /*hide element */
+  [data-mode="advanced"] {
+    display: none;
+  }
+  .mode-switch {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    display: inline-block;
   }
