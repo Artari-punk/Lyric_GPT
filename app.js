@@ -18,7 +18,7 @@ fetch("output.json")
 
     // Add default options to the select elements
     const defaultOption = document.createElement("option");
-    defaultOption.value = "";
+    defaultOption.value = "random";
     defaultOption.text = "-- Select an option --";
     EmotionSelect.add(defaultOption);
     toneSelect.add(defaultOption.cloneNode());
@@ -117,6 +117,28 @@ fetch("output.json")
         inspirationBySelect.appendChild(option);
       }
     });
+    // mode switch
+    const toggleModeButton = document.getElementById('toggle-mode');
+const advancedElements = document.querySelectorAll('[data-mode="advanced"]');
+
+function toggleMode() {
+  const mode = toggleModeButton.getAttribute('data-mode');
+  if (mode === 'advanced') {
+    advancedElements.forEach((element) => {
+      element.style.display = 'none';
+    });
+    toggleModeButton.setAttribute('data-mode', 'easy');
+    toggleModeButton.textContent = 'Switch to Advanced Mode';
+  } else {
+    advancedElements.forEach((element) => {
+      element.style.display = 'block';
+    });
+    toggleModeButton.setAttribute('data-mode', 'advanced');
+    toggleModeButton.textContent = 'Switch to Easy Mode';
+  }
+}
+
+toggleModeButton.addEventListener('click', toggleMode);
     const connectButton = document.getElementById("connect-button");
     connectButton.addEventListener("click", async () => {
       // Get the API key from the input field
@@ -165,29 +187,40 @@ fetch("output.json")
       const rhymeScheme = rhymeSchemeSelect.value;
       const poeticFeet = poeticFeetSelect.value;
       const inspirationBy = inspirationBySelect.value;
-
+    
       // Construct the prompt based on the selected values
-      const prompt = `Create a song lyric by incorporating Theme os song is a ${topic} in ${pointOfView} rule of write lyric  following elements this is important of lyric story , each serving a specific purpose: 
-      for Emotion ${emotion}  Convey the feeling  that you want audient listen lyric the lyrics to express, such as love, sadness, or joy relate with ${topic}. 
-      for Tone: ${tone}  refers to the overall mood or emotional quality conveyed by the words of the song. It can be described as the attitude or feeling that the lyrics evoke in the listener. The tone of a music lyric can vary widely, depending on the subject matter, the genre of the music, and the intended emotional effect.
+      const mode = toggleModeButton.getAttribute('data-mode');
+      
+      let prompt = '';
+      if (mode === 'easy') {
+        // Easy mode prompt
+        prompt = `Create a song lyric with the Theme of ${topic} use ${structure}. The song should have a ${emotion} emotion and told through the point of view of${pointOfView} this lyric i will use in ${inspirationBy} music style  you tell me only title and lyric.`;
+      } else {
+        // Advanced mode prompt
+        prompt = `Create a song lyric by incorporating ensuring that they are easy to sing and memorable for the audienc  with the Theme of ${topic} song in ${pointOfView} point of view important used machine learning algorithms to analyze your preferred ${inspirationBy} musical genre and incorporate genre-specific conventions into the generated lyrics each serving a specific purpose: 
+      for ${emotion} Emotion  Convey the feeling  that you want audient listen lyric the lyrics to express, such as love, sadness, or joy relate with ${topic}. 
+      for  ${tone} Tone refers to the overall mood or emotional quality conveyed by the words of the song. It can be described as the attitude or feeling that the lyrics evoke in the listener. The tone of a music lyric can vary widely, depending on the subject matter, the genre of the music, and the intended emotional effect.
       For example, the tone of a love song might be romantic and dreamy, while the tone of a protest song might be angry and passionate. A sad song might have a melancholy or mournful tone, while a happy song might have an upbeat and celebratory tone.
       The tone of a music lyric is often conveyed through the use of specific words, phrases, and ambient, as well as the melody and rhythm of the music itself. It is an important element in creating a compelling and emotionally resonant song.
-      for ambient  use ${ambient}Ambient setting, in the context of storytelling, refers to the overall atmosphere or mood of the environment in which the story takes place. It includes the physical location, time of day, weather conditions, and other sensory details that create a specific tone or feeling for the reader or listener.
+      for ambient of lyric use ${ambient} Ambient setting, in the context of storytelling, refers to the overall atmosphere or mood of the environment in which the story takes place. It includes the physical location, time of day, weather conditions, and other sensory details that create a specific tone or feeling for the reader or listener.
       For example, if a story takes place in a dark and ominous forest at night, the ambient setting would be eerie and foreboding. The rustling of leaves, the howling of wolves, and the creaking of tree branches would contribute to the overall atmosphere of danger and mystery.
       Alternatively, a story set on a sunny beach on a summer day would have a more relaxed and carefree ambient setting. The sound of waves crashing, the warmth of the sun, and the smell of saltwater and sunscreen would create a sense of leisure and tranquility.
       Ambient setting is an important element of storytelling as it helps to immerse the reader or listener in the world of the story and can contribute to the emotional impact of the narrative. By using sensory details to create a vivid and engaging ambient setting, writers can create a more immersive and memorable story. and enhance the listener's feel the environment with the ${topic} of music.
-      for Structure of this lyric use ${structure} of music lyrics refers to the way lyrics are organized within a song. While there is no strict formula for writing lyrics, most songs follow a common structure that consists of several key elements. Here's a general breakdown of a typical song lyric structure:
+      for Structure of this lyric use ${structure} structure of music lyrics refers to the way lyrics are organized within a song. While there is no strict formula for writing lyrics, most songs follow a common structure that consists of several key elements. Here's a general breakdown of a typical song lyric structure:
       Verse: The verse usually sets the scene, introduces the story or theme, and provides details. Each verse typically has the same melody but different lyrics, allowing the story or message to progress throughout the song.
-      Chorus: The chorus is the most memorable part of the song and often contains message talk about  ${topic} of this song. It usually has a catchy word and is repeated multiple times throughout the song, with the same lyrics each time.
+      Chorus: The chorus is the most memorable part of the song and often contains message talk about  topic ${topic} of this song. It usually has a catchy word and is repeated multiple times throughout the song, with the same lyrics each time.
       Pre-Chorus: Not all songs have a pre-chorus, but when present, it serves as a transitional section between the verse and chorus. It often builds tension or anticipation before the chorus and may contain different lyrics and melody than the verse and chorus.
       Bridge: The bridge is an optional section that provides a contrast to the verse and chorus, both musically and lyrically. It usually appears after the second or third chorus and offers a change of pace, often featuring different chords, melody, and lyrics. It serves to create variety and can provide a resolution or new perspective on the song's theme.
-      Outro: The outro is the closing section of the song, bringing  lyrics to a conclusion the story of this song go to end of this section story of ${topic} have ${endingStyle} on this section. 
-      for voice of lyric wrte in ${style} attitude or perspective towards the ${topic} story relatiobship of sentence focus on use as ${poeticFeet} of sentence 
-      and relationship between sentence in section use ${rhymeScheme} for ryhme 
-      make Musicality: ${musicality} flow of the lyrics to ensure they complement the music and enhance the song's overall feel.
-      lyric i will use for : ${inspirationBy} song as a refferance make for ${audience} listenner 
-      tell me only title and lyric `;
-
+      Outro: The outro is the closing section of the song, bringing  lyrics to a conclusion the story of this song go to end of this section story of ${topic} have endingStyle ${endingStyle} on this section. 
+      for voice of lyric wrte in ${style} attitude or perspective towards the ${topic} story relatiobship of sentence focus on use as ${poeticFeet} poeticFeet 70% in sentence
+      and relationship between sentence in section use ${rhymeScheme} when you choose rhyme Scheme to write word
+      make  ${musicality} Musicality flow of the lyrics to ensure they complement the music and enhance the song's overall feel.
+      lyric i will use for preferred ${inspirationBy} musical genre and incorporate genre-specific conventions into the generated lyrics 
+       ensuring that they are easy to sing and memorable for the ${audience} audience output only tell me only title and lyric .`;
+        
+      }
+       //check mode
+      console.log("mode", mode)
       //check prompt
       console.log(prompt);
       //const prompt = `${Emotion} ${tone} ${ambient} ${structure} ${style} ${endingStyle} ${pointOfView} ${musicality} ${audience} ${rhymeScheme} ${poeticFeet} ${inspirationBy}.`;
@@ -246,6 +279,7 @@ const status = document.getElementById("status");
         }
       } catch (error) {
         // If there's an error, display an error message
+        console.error("Conection error:", error);
         output.textContent = "Error: Could not connect to the OpenAI API";
         output.style.color = "red";
       }
