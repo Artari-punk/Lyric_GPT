@@ -12,20 +12,20 @@
   <body>
     <header>
       <div class="logo-container">
-  <svg viewBox="0 0 960 300">
-    <symbol id="s-text">
-      <text text-anchor="middle" x="50%" y="75%">Lyric-GPT</text>
-    </symbol>
+        <svg viewBox="0 0 960 300">
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="75%">Lyric-GPT</text>
+          </symbol>
 
-    <g class = "g-ants">
-      <use xlink:href="#s-text" class="text-copy"></use>
-      <use xlink:href="#s-text" class="text-copy"></use>
-      <use xlink:href="#s-text" class="text-copy"></use>
-      <use xlink:href="#s-text" class="text-copy"></use>
-      <use xlink:href="#s-text" class="text-copy"></use>
-    </g>
-  </svg>
-</div>
+          <g class="g-ants">
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+          </g>
+        </svg>
+      </div>
     </header>
     <div>
       <label for="api-key-input">Enter your OpenAI API key:</label>
@@ -33,23 +33,27 @@
       <button id="connect-button">Connect</button>
       <div id="connection-status"></div>
     </div>
-
+    <!-- Add the toggle button here -->
+    <div class="mode-switch">
+      <button id="toggle-mode" data-mode="easy">Advance Mode</button>
+    </div>
     <div class="container">
       <form>
         <!-- Separate div for topic input -->
+
         <div class="topic-input">
           <label for="topic-input">Topic:</label>
           <input type="text" id="topic-input" name="topic-input" placeholder="Enter a topic">
         </div>
-        <div class="form-group">
+        <div class="form-group" >
           <label for="Emotion">Emotion:</label>
           <select id="Emotion"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="tone">Tone:</label>
           <select id="tone"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="ambient">Ambient:</label>
           <select id="ambient"></select>
         </div>
@@ -57,11 +61,11 @@
           <label for="structure">Structure:</label>
           <select id="structure"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="style">Style:</label>
           <select id="style"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="ending-style">Ending Style:</label>
           <select id="ending-style"></select>
         </div>
@@ -69,19 +73,19 @@
           <label for="point-of-view">Point of View:</label>
           <select id="point-of-view"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="musicality">Musicality:</label>
           <select id="musicality"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="audience">Audience:</label>
           <select id="audience"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="rhyme-scheme">Rhyme Scheme:</label>
           <select id="rhyme-scheme"></select>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-mode="advanced">
           <label for="poetic-feet">Poetic Feet:</label>
           <select id="poetic-feet"></select>
         </div>
@@ -110,7 +114,7 @@
         <p>&copy; 2023 LyricGPT. All rights reserved.</p>
       </div>
     </footer>
-    
+
     <script src="app.js"></script>
     <script>
       const copyButton = document.getElementById("copy-button");
@@ -130,6 +134,7 @@
       });
 
     </script>
+
   </body>
 
 </html>
